@@ -1,0 +1,282 @@
+\documentclass{article}  /*article是文档类，经常用来写论文  */
+\begin{document} /**开始/
+    正文区
+\usepackage{ctex} /*导入中文宏包*/
+\end
+
+\begin{equation}
+    产生带编号的行间公式
+\end{equation}
+
+$^$ 在$符号之间的内容，被称为数学模式
+$$ $$行间公式，会另起一行，中间显示公式
+
+
+处理中文：
+    \heiti 黑体
+    \kaishu 楷书
+
+    ^\circ实现度数右上角角标
+
+字体设置：
+    字体编码
+        正文字体编码
+        数学字体编码
+    字体族
+        罗马字体
+            \textrm{Roman Family} %Roman Family将会以罗马字体显示
+            \rmfamily Roman Family %声明后续字体为罗马字体
+        无衬线字体
+            \textsf{Sans Serif Family} %Sans Serif Family 将以无衬线字体显示
+            \sffamily Sans Serif Family %后续字体均以无衬线字体显示
+        打字机字体
+            \texttt{Typewriter Family} %Typewriter Family将以打字机字体显示
+            \ttfamily Typewriter Family 后续字体均以打字机字体显示
+        可以使用大括号对文本限制，限制文本字体族的范围
+    字体系列
+        粗细
+            \textmd{mmmm} %中等粗细
+                {\mdseries 文本} 
+            \textbf{sss} %加粗
+                {\bfseries 文本}
+        宽度
+    字体形状
+        直立
+            \textup{文本}
+            {\upshape 文本}
+        斜体
+            \textit{文本}
+            {\itshape 文本}
+        伪斜体
+            \textsl{文本}
+            {\slshape 文本}
+        小型大写
+            \textsc{文本}
+            {\scshape 文本}
+    字体大小
+        \tiny{Hello!}\\
+        \scriptsize{Hello!}\\
+        \footnotesize{Hello!}\\
+        \small{Hello!}\\
+        \normalsize{Hello!}\\
+        \large{Hello!}\\
+        \Large{Hello!}\\
+        \LARGE{Hello!}\\
+        \huge{Hello!}\\
+        \Huge{Hello!}\\
+    字号大小
+        \zihao{2} %2号字体
+
+使用文本与格式分离，即css实现
+    \newcommand{\自己起的命令名称}{\原本的实现}
+
+
+基本结构
+    小结（目录？）
+        \section{引言} %可以后续插入文本，作为小结内容
+            \subsection{子小结}
+                \subsubsection{下一结的小结}
+
+使用换行来实现文本的换行，文本内多次换行只会在pdf中换行一次，
+使用\\来换行，但不会产生新段落，首行不会缩进
+可以使用\par 来进行分段落，并且首行缩进
+
+进行类似css设置：
+    \ctexset{
+        section = {
+            format += \zihao{-4} \heiti \raggedright,
+            name = {,},
+            number = \chinese{section}.
+            beforeskip = 1.0ex plus 0.2ex minus .2ex,
+            afterskip = 1.0ex plus 0.2ex minus .2ex,
+            aftername = \hspace{0pt}
+        }
+    }
+
+
+\tableofcontents 文档目录
+
+%空行分段，多个空行等于一个
+%自动缩进，绝对不能使用空格代替
+%英文中多个空格处理为一个空格，中文中空格将被忽略
+%汉字与其他字符的间距会自动有latex处理
+%禁止使用中文全角空格
+
+%空格输入：
+    \quad产生1em空白
+    \qquad产生2em空白
+    \ 反斜杠加空格输出一个空格
+    \kern 1pc  \kern+空格+参数+空格 实现指定大小的空格
+    \hfill 弹性长度，撑满整个页面
+
+排版符号
+    \S \P \dag \dag \copyright \pounds
+引号
+    `表示‘ `` 表示‘‘
+    '表示’ ''表示’’
+连字符
+    - -- --- 分别生成短中长的
+
+插图操作
+    \usepackage{graphicx}导入宏包
+
+    \includegraphics{<选项><文件名>}
+        支持：EPS,PDF,PNG,JPEG,BMP
+    指定缩放因子，以及旋转等参数
+    \includegraphics[scale=0.3]{文件名} %文件名可以不带后缀，但是选项必须使用[]
+        scale 缩放因子
+        height 高度
+        width 宽度 
+        angle 旋转角度
+表格
+    \begin{tabular}{选项}
+        选项：l表示左对齐
+              c表示居中对齐
+              r表示右对齐
+              |产生竖线
+              ||产生双竖线
+              p{1.5cm}指定宽度的列
+        \hline产生横线
+        列值与列值之间使用&分开
+        使用\\换行
+
+浮动体
+    %figure  图
+    %table  表格
+
+    \begin{figure}[可选参数]
+            可选参数
+                htbp
+        \centering %居中排版
+        \includeuderrapgice[scale=0.3]{lion}
+        \caption{text}设置插图标题
+    \end{figure}
+见图\ref{key} %引用该标签
+    \begin{table}
+        \centering
+        \caption{text}
+        \label{key}%为浮动体设置标签
+    \end{table}
+
+数学公式
+    $           $
+    \(           )\
+    \begin{math}  \end{math}
+
+^上标 只会对紧随其后的单个字符排版，若指数部分超过两个， 则需要加{}
+_下标
+
+希腊字母
+    $\alpha$
+    $beta$
+    $\gamma$
+    $\epsilon$
+    $\pi$
+    $\omega$
+    $\Gamma$
+    $\Delta$
+    $\Theta$
+    $\Pi$
+    $\Omega$
+
+数学函数
+    $\log$
+    $\sin$
+    $\cos$
+    $\arcsin$
+    $\arccos$
+    $\In$
+    $\sqrt{}$  %根号
+        $\[4]{x}$   4次根号下
+    $\3/4$  <--> $\frac{3}{4}$
+
+    $$     $$  
+        <-->  /[          ]/ 
+            <--> /begin{displaymath}   /end{displaymath}  %行间公式
+
+    
+    \begin{equation}
+        文档公式排版，自动编号（可以使用\label{}添加标签，使用\ref{}引用标签）
+    \end{equation}
+
+    usepackage{amsmath}
+    \begin{matrix} //矩阵
+        0 & 1 \\
+        1 & 0
+    \end{matrix}
+
+    \begin{pmatrix} 矩阵两端加小括号
+    \begin{bmatrix} 矩阵两端加中括号
+    \begin{Bmatrix} 矩阵两端加大括号
+    \begin{vmatrix} 矩阵两端加单竖线
+    \begin{Vmatrix} 矩阵两端加双竖线
+        省略号：\dots \vdots \ddots
+        可以使用\times排版乘号
+
+    \text用于在数学公式中临时切换到文本模式
+
+    \matrix分块矩阵
+    \multicolumn{2}合并多列(2列)
+    \raisebox{1.3ex}[0pt]h合并多行
+    \hdotsfor{<列数>}跨列省略号
+    \begin{smallmatrix}排版行内小矩阵
+        \left(  %用于生成左小括号
+        \right) %用于生成右小括号
+    
+    \begin{array}环境类似表格tabular环境
+
+多行公式的排版
+    \usepackage{amsmath} 
+    \begin{gather}环境实现多行公式排版
+        %带编号
+        %可以使用\\换行
+        %可以在结尾使用notage命令阻滞编号
+    \begin{gather*}实现不带编号的排版
+
+        \begin{algin}环境对指定位置进行对齐
+            指定位置用&指出
+        \begin{algin*}不进行编号
+    
+    \begin{split}环境可以使得一个公式多行排版
+        使用\\换行，&指定对齐
+
+    \begin{cases}环境实现分段函数
+        %使用&进行分割两部分，
+        %通常表示值和后面的条件
+        \in 输出属于符号
+
+\begin{thebibliography}{1}
+\bibitem{liu} 刘海洋. \LaTeX 入门 [M]. 北京: 电子工业出版社, 2013.
+\bibitem{hu}  胡伟. \LaTeX 2e完全学习手册(第二版). 北京: 清华大学出版社, 2013.
+\end{thebibliography}
+
+
+amsmath 公式环境和数学命令
+amssymb 数学符号生成命令
+array 数组和表格制作
+calc 四则运算
+caption 插图和表格标题格式设置
+fancyhdr 页眉页脚设置
+fancyvrb 抄录格式设置
+fontspec 字体选择
+geometry 版面尺寸设置
+graphicx 插图处理
+hyperref 创建超文本链接和PDF书签
+longtable 制作跨页表格
+multicol 多栏排版
+ntheorem 定理设置
+paralist 多种列表环境
+tabularx 自动设置表格列宽
+titlesec 章节标题格式设置
+titletoc 目录格式设置
+xcolor 颜色处理
+xeCJK 中日朝文字处理和字体选择
+
+\begin{conter} %居中排版
+\boldmath  $  $ %数学公式的加粗
+    使用完该命令后要记得将恢复现场
+        \unboldmath\
+\par 换行且下一行缩进
+
+\begin{itemize} 相当于html的ol
+\begin{enumerate} 相当于ul默认是1，2，3，需要指定选项值类似[i]
