@@ -1,0 +1,124 @@
+安装vim
+apt-get install vim
+安装zsh
+apt install zsh
+下载谷歌浏览器
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+安装
+dpkg -i google-chrome-stable_current_amd64.deb
+彻底卸载火狐浏览器
+sudo apt-get purge firefox firefox-locale-en  firefox-locale-zh-hans
+
+删除linux的默认word等软件
+sudo apt-get remove --purge libreoffice*
+安装vs-code
+	python
+	c++
+	code-runner
+	java
+	vscode-pdf
+	shell
+安装wps
+	rm -rf ~/.config/Kingsoft
+安装gCC，g++,sdcc
+安装java
+	apt install openjdk-17-jre-headless
+	apt install openjdk-17-jdk-headless
+安装mpv
+安装pip3 
+	sudo apt-get install python3-pip
+安装git	
+	sudo apt-get install git
+on-my-zsh
+	git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+	cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+	chsh -s /bin/zsh
+	vim ~/.zshrc
+	ZSH_THEME 改成 "ys"
+	source ~/.zshrc
+	修改绿色背景
+		1. cd ~
+		2. dircolors -p > .dircolors
+		3. vim .dircolors
+		找到 OTHER_WRITABLE 34;42
+		修改为 OTHER_WRITABLE 34;01
+		4. vim .zshrc
+		编辑.zshrc，添加下面这段(是从.bashrc拷贝出来的)
+		 if [ -x /usr/bin/dircolors ]; then
+			 test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+				alias ls='ls --color=auto'
+				alias dir='dir --color=auto'
+				alias vdir='vdir --color=auto'
+				alias grep='grep --color=auto'
+				alias fgrep='fgrep --color=auto'
+				alias egrep='egrep --color=auto'
+		 fi
+		5. source .zshrc
+		搞定，修改方法找到了，举一反三，调整其他颜色都so easy!
+
+
+桌面美化
+
+sudo apt install gnome-tweak-tool        #安装管理工具
+sudo apt install gnome-shell-extensions  #扩展管理
+sudo apt-get install gnome-shell-extension-dashtodock 安装插件
+gnome-tweaks 打开管理
+
+输入法
+ sudo apt install ibus-rime
+ 
+vim ~/.config/ibus/rime/build/luna_pinyin.schema.yaml
+    
+    states: ["漢字", "汉字"]前面添加   reset: 1
+vim ~/.config/ibus/rime/build/ibus_rime.yaml
+	添加：
+		style:
+  			horizontal: true
+vim .config/ibus/rime/weasel.custom.yaml
+添加:
+patch:
+  "style/horizontal": true      # 候選橫排
+  ibus-setup中设置
+  
+vim ~/.config/ibus/rime/default.custom.yaml
+patch:
+  schema_list:
+    - schema: luna_pinyin_simp
+  "menu/page_size": 6
+合并bilibili的音频和视频（bilibili视频下载后视频和音频是分开的）
+	第一步：添加源              sudo add-apt-repository ppa:djcj/hybrid 
+	第二步：更新源              sudo apt-get update
+	第三步：下载安装         sudo apt-get install ffmpeg
+	ffmpeg -i video.m4s -i audio.m4s -c:v copy -strict experimental output.mp4 
+压缩文件
+tar -zcvf 1931053726.gz 1931053726
+linux 翻译词典安装
+sudo apt-get install sdcv
+然后将数据包从http://download.huzheng.org/zh_CN/下载，后解压到~/.stardict/dic即可。
+使用sdvc [单词]即可查询
+
+无法使用ifconfig命令
+apt-get install net-tools 
+然后就可以使用了
+
+vscode定义快捷键：
+	Ctrl+shift+p
+	输入snippet 选择首选项配置用户代码片段
+	新建全局代码片段
+	自定义该快捷键的文件名称
+	
+	文件名为-空格
+	"空格":{ //必须与文件名相同
+		"scope": "latex", //此代码段使用的语言名称列表，例如 "typescript,javascript"。
+		"prefix": "kongge",//在 Intellisense 中选择代码片段时要使用的前缀
+		"body": "&emsp;&emsp; $1 \\par" //片段内容。请使用 '$1', '${1:defaultText}' 来定义光标位置，使用“$0”表示最终光标位置。请插入带有“${varName}”和“${varName:defaultText}”的变量值，例如 "这是文件: $TM_FILENAME"。
+	}
+	
+
+
+
+浏览器使用you.com可以搜索到google内容。
+然后下载油猴脚本，点击获取新脚本，点击GreasyFork或者github选项来下载脚本
+
+在网站中下载 skype https://go.skype.com/skypeforlinux-64.deb
+skypeforlinux
