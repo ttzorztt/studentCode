@@ -1,23 +1,4 @@
-## <center> 文档目录 ##
-```mermaid
-graph LR
-A[final] --> B[src]
-B[src] --> F[img]
-B[src] --> Common.java
-B[src] --> EnemyFish.java
-B[src] --> Gamewin.java
-B[src] --> MyFish.java
-B[src] --> StartGame.java
-A[final] --> C[papers]
-C[papers] --> presentation.pdf
-C[papers] --> 1931053726_张探探.pdf
-A[final] --> D(readme.pdf)
-A[fianl] --> E(run.sh)
-```
-<br>
-<br>
-<br>
-<br>
+
 
 ## <center> 运行方法 ##
 进入FINAL目录下，使用shell命令：
